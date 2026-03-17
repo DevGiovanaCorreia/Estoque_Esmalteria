@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package br.com.senac.estoque_esmalteria.data;
+package br.com.senac.estoque_esmalteria.DAO;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -12,7 +12,7 @@ import jakarta.persistence.Persistence;
  *
  * @author vitor
  */
-public class JAPAUtil {
+public class JPAUtil {
   
     private static EntityManagerFactory emf =
             Persistence.createEntityManagerFactory("estoquePU");
