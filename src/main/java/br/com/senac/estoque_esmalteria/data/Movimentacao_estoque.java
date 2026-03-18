@@ -23,22 +23,22 @@ public class Movimentacao_estoque {
    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     @ManyToOne
-    private Produto produto;
+    private Produto produto_id;
 
     private String tipo;
     private int quantidade;
 
-    private LocalDateTime dataMovimento;
+    private LocalDateTime data_movimento;
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
     public Produto getProduto() {
-        return produto;
+        return produto_id;
     }
 
     public String getTipo() {
@@ -50,15 +50,15 @@ public class Movimentacao_estoque {
     }
 
     public LocalDateTime getDataMovimento() {
-        return dataMovimento;
+        return data_movimento;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
     public void setProduto(Produto produto) {
-        this.produto = produto;
+        this.produto_id = produto;
     }
 
     public void setTipo(String tipo) {
@@ -70,7 +70,7 @@ public class Movimentacao_estoque {
     }
 
     public void setDataMovimento(LocalDateTime dataMovimento) {
-        this.dataMovimento = dataMovimento;
+        this.data_movimento = dataMovimento;
     }
 }
     

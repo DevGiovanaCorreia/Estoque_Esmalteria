@@ -38,7 +38,7 @@ public class ProdutoDAO {
         return lista;
     }
 
-    public Produto buscarPorId(Long id) {
+    public Produto buscarPorId(int id) {
         EntityManager em = JPAUtil.getEntityManager();
 
         Produto produto = em.find(Produto.class, id);
@@ -57,7 +57,7 @@ public class ProdutoDAO {
         em.close();
     }
 
-    public void deletar(Long id) {
+    public void deletar(int id) {
         EntityManager em = JPAUtil.getEntityManager();
 
         Produto produto = em.find(Produto.class, id);
