@@ -36,6 +36,7 @@ public class Menu extends javax.swing.JFrame {
 
     for (Produto p : lista) {
         model.addRow(new Object[]{
+            p.getId(),
             p.getNome(),
             p.getCategoria(),
             p.getMarca(),
@@ -115,13 +116,13 @@ public class Menu extends javax.swing.JFrame {
 
         tblEstoque.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Nome", "Categoria", "Marca", "Preço", "Quantidade"
+                "Id", "Nome", "Categoria", "Marca", "Preço", "Quantidade"
             }
         ));
         jScrollPane1.setViewportView(tblEstoque);
@@ -194,7 +195,18 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        // TODO add your handling code here:
+         int linha = tblEstoque.getSelectedRow();
+
+    if (linha == -1) {
+        JOptionPane.showMessageDialog(this, "Selecione um produto");
+        return;
+    }
+
+    int id = (int) tblEstoque.getValueAt(linha, 0);
+    produtodao.deletar(id);
+
+    JOptionPane.showMessageDialog(this, "Produto excluído com sucesso");
+    carregarLista();
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaidaActionPerformed
