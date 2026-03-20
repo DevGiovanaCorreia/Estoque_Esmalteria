@@ -190,7 +190,19 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        new TelaCadastro().setVisible(true);
+       
+        int linha = tblEstoque.getSelectedRow();
+        
+       if(linha == -1){
+           JOptionPane.showMessageDialog(this, "selecione um produto");
+           return;
+       }
+        
+        int id = (int) tblEstoque.getValueAt(linha, 0);
+        Produto produto = produtodao.buscarPorId(id);
+        
+        TelaCadastro tela = new TelaCadastro(produto);
+        tela.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnEditarActionPerformed
 
