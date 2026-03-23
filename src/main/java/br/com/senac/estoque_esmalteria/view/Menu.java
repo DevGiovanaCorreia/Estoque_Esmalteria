@@ -176,9 +176,7 @@ public class Menu extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 19, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -222,8 +220,19 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaidaActionPerformed
-         new TelaSaida().setVisible(true);
-         this.dispose();
+       int linha = tblEstoque.getSelectedRow();
+
+if (linha == -1) {
+    JOptionPane.showMessageDialog(this, "Selecione um produto");
+    return;
+}
+
+int id = (int) tblEstoque.getValueAt(linha, 0);
+
+Produto produto = produtodao.buscarPorId(id);
+
+new TelaSaida(produto).setVisible(true);
+this.dispose();  
     }//GEN-LAST:event_btnSaidaActionPerformed
 
     /**
